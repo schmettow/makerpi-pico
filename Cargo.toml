@@ -1,0 +1,33 @@
+[package]
+name = "makerpi-pico"
+version = "0.1.0"
+authors = ["M. Schmettow"]
+edition = "2021"
+homepage = "https://github.com/schmettow/makerpi_pico"
+repository = "https://github.com/schmettow/makerpi_pico"
+description = "High performance implementation of YLab"
+license = "Apache-2.0 OR MIT"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+cortex-m = "0.7.2"
+rp2040-boot2 = { version = "0.2", optional = true }
+rp2040-hal = "0.7"
+cortex-m-rt = { version = "0.7", optional = true }
+critical-section = "1.1.1"
+switch-hal = "0.4.0"
+panic-halt = "0.2.0"
+
+[dev-dependencies]
+panic-halt= "0.2.0"
+embedded-hal ="0.2.5"
+smart-leds = "0.3.0"
+ws2812-pio = "0.5"
+nb = "1.0"
+fugit = "0.3.6"
+
+[features]
+default = ["boot2", "rt"]
+boot2 = ["rp2040-boot2"]
+rt = ["cortex-m-rt", "rp2040-hal/rt"]
